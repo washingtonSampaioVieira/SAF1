@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/menu_del"
+        android:title="Excluir"
+        android:icon="@drawable/ic_cancelar"
+        app:showAsAction="always"/>
+    <item
+        android:id="@+id/menu_salvar"
+        android:title="Salvar"
+        android:icon="@drawable/ic_salvar"
+        app:showAsAction="always"/>
+
+
+</menu>
