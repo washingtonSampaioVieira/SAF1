@@ -27,7 +27,7 @@ public class ContatoHelper{
         contato = new Contato();
     }
     public Contato getContato(){
-        Contato contato = new Contato();
+
 
         contato.setNome(nome.getText().toString());
         contato.setEndereco(endereco.getText().toString());
@@ -39,4 +39,14 @@ public class ContatoHelper{
     }
 
 
+    public void mostarContato(Contato contato) {
+        nome.setText(contato.getNome());
+        endereco.setText(contato.getEndereco());
+        telefone.setText(contato.getTelefone());
+        email.setText(contato.getEmail());
+        linkedin.setText(contato.getLinkedin());
+
+        this.contato = contato;
+
+    }
 }

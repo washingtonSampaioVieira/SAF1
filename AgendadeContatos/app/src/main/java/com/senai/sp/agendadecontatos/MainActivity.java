@@ -1,9 +1,11 @@
 package com.senai.sp.agendadecontatos;
 
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -34,12 +36,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(chamarCadastro);
             }
         });
+
+        listaContatos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Contato contato = (Contato) listaContatos.getItemAtPosition(position);
+                Intent intencao = new Intent(MainActivity.this, Cadastro.class);
+                intencao.putExtra("contato", contato);
+
+                    startActivity(intencao);
+
+            }
+        });
     }
 
     @Override
-    protected void onRestart() {
+    protected void onRestart(){
         super.onRestart();
         carregarLista();
+
     }
 
     private void carregarLista() {
@@ -47,8 +62,8 @@ public class MainActivity extends AppCompatActivity {
 
         List<Contato> contatos = dao.getContatos();
 
-        ArrayAdapter<Contato> arrayAdapter = new ArrayAdapter<Contato>(this, R.layout.support_simple_spinner_dropdown_item, contatos);
-        listaContatos.setAdapter(arrayAdapter);
+        ArrayAdapter<Contato> arrayAdapterContatos = new ArrayAdapter<Contato>(this, android.R.layout.simple_list_item_1, contatos);
+        listaContatos.setAdapter(arrayAdapterContatos);
 
     }
 }

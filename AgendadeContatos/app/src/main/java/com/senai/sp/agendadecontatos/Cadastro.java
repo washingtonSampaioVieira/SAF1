@@ -1,5 +1,6 @@
 package com.senai.sp.agendadecontatos;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,11 +24,19 @@ public class Cadastro extends AppCompatActivity {
     EditText linkedin;
 
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
 
+        Intent intencao = getIntent();
+        Contato contato = (Contato) intencao.getSerializableExtra("contato");
+
+        if(contato != null){
+            ContatoHelper helper = new ContatoHelper(this);
+            helper.mostarContato(contato);
+        }
 
     }
 
@@ -36,14 +45,21 @@ public class Cadastro extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_salvar:
 
+                ContatoDAO dao = new ContatoDAO(this);
                 ContatoHelper helper = new ContatoHelper(this);
+
                 Contato contato = new Contato();
                 contato = helper.getContato();
 
-                ContatoDAO dao = new ContatoDAO(this);
-                dao.salvar(contato);
-                Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT).show();
+                if(contato.getId() == 0){
+                    dao.salvar(contato);
+                    Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT).show();
 
+                }else{
+
+                    dao.atualizar(contato);
+                    Toast.makeText(this, "Atualizado", Toast.LENGTH_SHORT).show();
+                }
 
                 break;
         }

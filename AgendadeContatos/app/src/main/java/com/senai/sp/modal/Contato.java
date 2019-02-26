@@ -1,14 +1,16 @@
 package com.senai.sp.modal;
 
-public class Contato {
-    Integer id;
+import java.io.Serializable;
+
+public class Contato implements Serializable {
+    int id;
     String nome;
     String telefone;
     String endereco;
     String email;
     String linkedin;
 
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 

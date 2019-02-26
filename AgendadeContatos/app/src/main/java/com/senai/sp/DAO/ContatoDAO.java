@@ -64,17 +64,26 @@ public class ContatoDAO extends SQLiteOpenHelper {
         while(c.moveToNext()){
             Contato contato = new Contato();
 
+            contato.setId(c.getInt(c.getColumnIndex("id")));
             contato.setNome(c.getString(c.getColumnIndex("nome")));
             contato.setEmail(c.getString(c.getColumnIndex("email")));
             contato.setLinkedin(c.getString(c.getColumnIndex("linkedin")));
             contato.setTelefone(c.getString(c.getColumnIndex("telefone")));
             contato.setEndereco(c.getString(c.getColumnIndex("endereco")));
-            contato.setId(c.getInt(c.getColumnIndex("id")));
+
 
             contatos.add(contato);
 
         }
 
         return contatos;
+    }
+
+    public void atualizar(Contato contato) {
+        SQLiteDatabase db = getReadableDatabase();
+        String[] parametros= {String.valueOf(contato.getId())};
+        ContentValues dados= getContentValues(contato);
+        db.update("tbl_contato",dados, "id = ?", parametros);
+
     }
 }
