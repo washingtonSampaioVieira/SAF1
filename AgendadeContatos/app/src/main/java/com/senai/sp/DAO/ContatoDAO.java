@@ -86,4 +86,12 @@ public class ContatoDAO extends SQLiteOpenHelper {
         db.update("tbl_contato",dados, "id = ?", parametros);
 
     }
+
+    public void excluir(Contato contato) {
+
+        SQLiteDatabase db = getReadableDatabase();
+        String[] argumentos = {String.valueOf(contato.getId())};
+
+    db.delete("tbl_contato", "id = ?", argumentos);
+    }
 }

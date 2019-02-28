@@ -35,7 +35,7 @@ public class ContatoHelper{
         contato.setEmail(email.getText().toString());
         contato.setLinkedin(linkedin.getText().toString());
 
-        return contato;
+        return this.contato;
     }
 
 

@@ -57,4 +57,9 @@ public class Contato implements Serializable {
     public void setLinkedin(String linkedin) {
         this.linkedin = linkedin;
     }
+
+    @Override
+    public String toString() {
+        return getId()+ " - "+ getNome();
+    }
 }
