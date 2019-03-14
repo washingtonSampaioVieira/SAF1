@@ -9,6 +9,7 @@
     android:padding="15dp">
 
     <TextView
+        android:id="@+id/txt_cadastro"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Cadastro de Contato"
@@ -41,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Endereço:"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="-5dp"
         android:layout_marginLeft="5dp"
         />
@@ -62,7 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Telefone:"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="-5dp"
         android:layout_marginLeft="5dp"
         />
@@ -84,7 +85,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="E-mail:"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="-5dp"
         android:layout_marginLeft="5dp"/>
     <android.support.design.widget.TextInputLayout
@@ -105,7 +106,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Endereço linkedin:"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="-5dp"
         android:layout_marginLeft="5dp"/>
     <android.support.design.widget.TextInputLayout

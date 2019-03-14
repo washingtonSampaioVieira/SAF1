@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.senai.sp.DAO.ContatoDAO;
@@ -26,7 +27,7 @@ public class Cadastro extends AppCompatActivity {
     TextInputLayout layoutEndereco;
     TextInputLayout layoutTelefone;
     TextInputLayout layoutEmail;
-
+    TextView cadastroNome;
     ContatoHelper helper;
 
 
@@ -35,6 +36,7 @@ public class Cadastro extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro);
+
         nome = findViewById(R.id.edit_nome);
         endereco = findViewById(R.id.edit_endereco);
         telefone = findViewById(R.id.edit_telefone);
@@ -43,6 +45,7 @@ public class Cadastro extends AppCompatActivity {
         layoutEmail = findViewById(R.id.layout_txt_email);
         layoutEndereco = findViewById(R.id.layout_txt_endereco);
         layoutTelefone = findViewById(R.id.layout_txt_telefone);
+        cadastroNome = findViewById(R.id.txt_cadastro);
 
         /*getSupportActionBar().setDisplayHomeAsUpEnabled(true); // mostra o botao de voltar
         getSupportActionBar().setHomeButtonEnabled(true); // faz o botao existir
@@ -55,8 +58,11 @@ public class Cadastro extends AppCompatActivity {
         Contato contato = (Contato) intencao.getSerializableExtra("contato");
         helper = new ContatoHelper(this);
         if(contato != null){
+            cadastroNome.setText("Atualizar Contato");
 
             helper.mostarContato(contato);
+        }else{
+            cadastroNome.setText("Criar Contato");
         }
 
     }
@@ -67,7 +73,6 @@ public class Cadastro extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.menu_salvar:
-
 
                     ContatoDAO dao = new ContatoDAO(this);
 
@@ -83,13 +88,11 @@ public class Cadastro extends AppCompatActivity {
                         dao.atualizar(contato);
                         Toast.makeText(this, "Atualizado", Toast.LENGTH_SHORT).show();
                     }
-
-
-
                 break;
 
             }
             finish();
+
         }
         return super.onOptionsItemSelected(item);
 

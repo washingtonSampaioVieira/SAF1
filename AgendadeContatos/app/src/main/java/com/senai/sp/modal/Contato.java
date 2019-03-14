@@ -60,6 +60,6 @@ public class Contato implements Serializable {
 
     @Override
     public String toString() {
-        return getId()+ " - "+ getNome();
+        return getId()+ " - "+ getNome() + "\n" + getEmail();
     }
 }

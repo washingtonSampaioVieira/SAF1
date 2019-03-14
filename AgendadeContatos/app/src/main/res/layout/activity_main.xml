@@ -16,6 +16,7 @@
         android:layout_width="48dp"
         android:layout_height="48sp"
         android:text="+"
+        android:textColor="@color/colorWhite"
         android:background="@drawable/btn_novo"
         android:textAlignment="center"
         android:layout_alignParentBottom="true"
