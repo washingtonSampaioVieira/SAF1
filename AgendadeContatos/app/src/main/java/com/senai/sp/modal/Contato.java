@@ -9,6 +9,16 @@ public class Contato implements Serializable {
     String endereco;
     String email;
     String linkedin;
+    private byte[] foto;
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
+
 
     public int getId() {
         return id;

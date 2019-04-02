@@ -1,129 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Cadastro"
-    android:orientation="vertical"
-    android:padding="15dp">
+     android:layout_height="match_parent"
+    android:layout_width="match_parent">
 
-    <TextView
-        android:id="@+id/txt_cadastro"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Cadastro de Contato"
-        android:textAlignment="center"
-        android:textSize="25sp"
-        android:fontFamily="sans-serif"
-        android:textColor="@color/colorPrimaryDark"
-        android:layout_marginBottom="20dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nome:"
-        android:layout_marginLeft="5dp"
-        />
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_txt_nome">
-        <EditText
-            android:id="@+id/edit_nome"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:inputType="text"
-            android:textSize="15dp"
-            android:hint="Digite o nome do seu contato"/>
-    </android.support.design.widget.TextInputLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Endereço:"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="-5dp"
-        android:layout_marginLeft="5dp"
-        />
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_txt_endereco">
-        <EditText
-            android:id="@+id/edit_endereco"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:inputType="text"
-            android:hint="Digite o endereço"
-            android:textSize="15dp"/>
-    </android.support.design.widget.TextInputLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Telefone:"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="-5dp"
-        android:layout_marginLeft="5dp"
-        />
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_txt_telefone">
-        <EditText
-            android:id="@+id/edit_telefone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:text=""
-            android:inputType="phone"
-            android:hint="Digite o Telefone"
-            android:textSize="15dp"/>
-    </android.support.design.widget.TextInputLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="E-mail:"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="-5dp"
-        android:layout_marginLeft="5dp"/>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_txt_email">
-        <EditText
-            android:id="@+id/edit_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:text=""
-            android:hint="Digite o E-mail"
-            android:textSize="15dp"
-            android:inputType="textEmailAddress"/>
-    </android.support.design.widget.TextInputLayout>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Endereço linkedin:"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="-5dp"
-        android:layout_marginLeft="5dp"/>
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout_txt_linkedin">
-        <EditText
-            android:id="@+id/edit_linkedin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="textStart"
-            android:text=""
-            android:inputType="text"
-            android:hint="Digite o Linkedin (opcional)"
-            android:textSize="15dp"/>
-    </android.support.design.widget.TextInputLayout>
+        android:layout_height="match_parent"
+        tools:context=".Cadastro"
+        android:orientation="vertical">
 
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:background="@color/colorAccent"
+                android:id="@+id/img_foto_cadastro"
+                android:src="@drawable/ic_contato_padrao_branco"/>
+            <Button
+                android:id="@+id/btn_galeria"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/botao_galeria_flutuante"
+                android:layout_marginEnd="56dp"/>
+            <Button
+                android:id="@+id/btn_camera"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/botao_camera_flutuante"
+                />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="15dp">
 
-</LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome:"
+            android:layout_marginLeft="5dp"
+            />
+
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_txt_nome">
+            <EditText
+                android:id="@+id/edit_nome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:inputType="text"
+                android:textSize="15dp"
+                android:hint="Digite o nome do seu contato"/>
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Endereço:"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="-5dp"
+            android:layout_marginLeft="5dp"
+            />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_txt_endereco">
+            <EditText
+                android:id="@+id/edit_endereco"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:inputType="text"
+                android:hint="Digite o endereço"
+                android:textSize="15dp"/>
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telefone:"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="-5dp"
+            android:layout_marginLeft="5dp"
+            />
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_txt_telefone">
+            <EditText
+                android:id="@+id/edit_telefone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:text=""
+                android:inputType="phone"
+                android:hint="Digite o Telefone"
+                android:textSize="15dp"/>
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="E-mail:"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="-5dp"
+            android:layout_marginLeft="5dp"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_txt_email">
+            <EditText
+                android:id="@+id/edit_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:text=""
+                android:hint="Digite o E-mail"
+                android:textSize="15dp"
+                android:inputType="textEmailAddress"/>
+        </android.support.design.widget.TextInputLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Endereço linkedin:"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="-5dp"
+            android:layout_marginLeft="5dp"/>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_txt_linkedin">
+            <EditText
+                android:id="@+id/edit_linkedin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="textStart"
+                android:text=""
+                android:inputType="text"
+                android:hint="Digite o Linkedin (opcional)"
+                android:textSize="15dp"/>
+        </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

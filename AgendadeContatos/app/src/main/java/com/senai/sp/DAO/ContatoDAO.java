@@ -13,7 +13,7 @@ import java.util.List;
 
 public class ContatoDAO extends SQLiteOpenHelper {
     public ContatoDAO(Context context) {
-        super(context, "db_contato", null,1);
+        super(context, "db_contato", null,3);
     }
 
     @Override
@@ -24,7 +24,7 @@ public class ContatoDAO extends SQLiteOpenHelper {
                 "endereco TEXT NOT NULL," +
                 "telefone TEXT NOT NULL," +
                 "email TEXT NOT NULL," +
-                "linkedin TEXT NOT NULL )";
+                "linkedin TEXT NOT NULL)";
 
         db.execSQL(sql);
     }
@@ -32,6 +32,8 @@ public class ContatoDAO extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        String sql = "ALTER TABLE tbl_contato ADD COLUMN foto BLOB";
+        db.execSQL(sql);
     }
 
     public void salvar(Contato contato){
@@ -49,6 +51,7 @@ public class ContatoDAO extends SQLiteOpenHelper {
         dados.put("telefone", contato.getTelefone());
         dados.put("email", contato.getEmail());
         dados.put("linkedin", contato.getEndereco());
+        dados.put("foto", contato.getFoto());
 
         return dados;
     }
@@ -70,6 +73,7 @@ public class ContatoDAO extends SQLiteOpenHelper {
             contato.setLinkedin(c.getString(c.getColumnIndex("linkedin")));
             contato.setTelefone(c.getString(c.getColumnIndex("telefone")));
             contato.setEndereco(c.getString(c.getColumnIndex("endereco")));
+            contato.setFoto(c.getBlob(c.getColumnIndex("foto")));
 
 
             contatos.add(contato);

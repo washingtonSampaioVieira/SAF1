@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.senai.sp.DAO.ContatoDAO;
+import com.senai.sp.adapter.AdapterContato;
 import com.senai.sp.modal.Contato;
 
 import java.util.List;
@@ -121,9 +122,10 @@ public class MainActivity extends AppCompatActivity {
         ContatoDAO dao = new ContatoDAO(this);
 
         List<Contato> contatos = dao.getContatos();
+        dao.close();
+        AdapterContato adapterContato = new AdapterContato(this, contatos);
 
-        ArrayAdapter<Contato> arrayAdapterContatos = new ArrayAdapter<Contato>(this, android.R.layout.simple_list_item_1, contatos);
-        listaContatos.setAdapter(arrayAdapterContatos);
+        listaContatos.setAdapter(adapterContato);
 
     }
 }
