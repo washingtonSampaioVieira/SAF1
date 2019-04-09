@@ -24,16 +24,17 @@ public class ContatoDAO extends SQLiteOpenHelper {
                 "endereco TEXT NOT NULL," +
                 "telefone TEXT NOT NULL," +
                 "email TEXT NOT NULL," +
-                "linkedin TEXT NOT NULL)";
+                "linkedin TEXT NOT NULL," +
+                "foto BLOB)";
 
         db.execSQL(sql);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        String sql = "ALTER TABLE tbl_contato ADD COLUMN foto BLOB";
+        String sql = "DROP TABLE tbl_contato;";
         db.execSQL(sql);
+        onCreate(db);
     }
 
     public void salvar(Contato contato){

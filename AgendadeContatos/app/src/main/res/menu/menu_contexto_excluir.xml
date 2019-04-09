@@ -4,4 +4,12 @@
         android:id="@+id/menu_excluir"
         android:title="Excluir">
     </item>
+    <item
+        android:id="@+id/menu_ligar"
+        android:title="Ligar">
+    </item>
+    <item
+        android:id="@+id/menu_email"
+        android:title="Enviar E-mail">
+    </item>
 </menu>

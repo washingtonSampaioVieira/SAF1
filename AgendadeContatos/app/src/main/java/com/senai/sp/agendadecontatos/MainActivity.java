@@ -2,6 +2,7 @@ package com.senai.sp.agendadecontatos;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import com.senai.sp.DAO.ContatoDAO;
 import com.senai.sp.adapter.AdapterContato;
 import com.senai.sp.modal.Contato;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -72,45 +74,77 @@ public class MainActivity extends AppCompatActivity {
     @Override
 
         public boolean onContextItemSelected(MenuItem item) {
+
         final ContatoDAO dao = new ContatoDAO(this);
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-
         final Contato contato = (Contato) listaContatos.getItemAtPosition(info.position);
 
+        if(item.getItemId() == R.id.menu_excluir){
+            //Cria o gerador do AlertDialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            //define o titulo
+            builder.setTitle("Excluir");
+            //define a mensagem
+            builder.setMessage("Deseja o Contato " + '"' + contato.getNome() + '"' + "?");
+            //define um botão como Sim
 
-        //Cria o gerador do AlertDialog
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        //define o titulo
-        builder.setTitle("Excluir");
-        //define a mensagem
-        builder.setMessage("Deseja o Contato " + '"' + contato.getNome() + '"' + "?");
-        //define um botão como Sim
-
-        builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-                dao.excluir(contato);
-                carregarLista();
-                Toast.makeText(MainActivity.this, "Registro excluido", Toast.LENGTH_SHORT).show();
+            builder.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface arg0, int arg1) {
+                    dao.excluir(contato);
+                    carregarLista();
+                    Toast.makeText(MainActivity.this, "Registro excluido", Toast.LENGTH_SHORT).show();
 
 
-            }
-        });
-        builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
+                }
+            });
+            builder.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface arg0, int arg1) {
 
-                Toast.makeText(MainActivity.this, "Registro não excluido", Toast.LENGTH_SHORT).show();
-            }
-        });
-        //define um botão como negativo.
-        //cria o AlertDialog
-        alerta = builder.create();
-        //Exibe
-        alerta.show();
+                    Toast.makeText(MainActivity.this, "Registro não excluido", Toast.LENGTH_SHORT).show();
+                }
+            });
+            //define um botão como negativo.
+            //cria o AlertDialog
+            alerta = builder.create();
+            //Exibe
+            alerta.show();
+        }else if(item.getItemId() == R.id.menu_ligar){
+            ligarParaTelefone(contato.getTelefone());
+        }else if(item.getItemId() == R.id.menu_email){
+            enviarEmail(contato.getEmail());
+        }
+
 
 
         return true;
 
     }
+    public void ligarParaTelefone(String telefone){
+        Intent intent = new Intent(Intent.ACTION_DIAL);
+        intent.setData(Uri.parse("tel:" + telefone));
+        if(intent.resolveActivity(getPackageManager()) != null){
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "IMPOSSIBILITADO DE FAZER CHAMADAS", Toast.LENGTH_SHORT).show();
+        }
+    }
+    public void enviarEmail (String email){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/html");
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+//        intent.putExtra(Intent.EXTRA_SUBJECT, "Subject");
+        intent.putExtra(Intent.EXTRA_TEXT, " ");
+
+        startActivity(Intent.createChooser(intent, "Enviar Email"));
+
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }else{
+            Toast.makeText(this, "NÃO FOI POSSIVEL ENVIAR E-MAIL", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
 
     @Override
     protected void onResume() {

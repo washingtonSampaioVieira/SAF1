@@ -35,20 +35,19 @@ public class Cadastro extends AppCompatActivity {
 
     public static final int GALERIA_REQUEST = 1010;
     public static final int CAMERA_REQUEST = 2020;
-    EditText nome;
-    EditText endereco;
-    EditText telefone;
-    EditText email;
-    TextInputLayout layoutNome;
-    TextInputLayout layoutEndereco;
-    TextInputLayout layoutTelefone;
-    TextInputLayout layoutEmail;
-    TextView cadastroNome;
-    ContatoHelper helper;
-    Button btnGaleria;
-    Button btnCamera;
-    ImageView fotoContato;
-    String caminhoDaFoto;
+    private EditText nome;
+    private EditText endereco;
+    private EditText telefone;
+    private EditText email;
+    private TextInputLayout layoutNome;
+    private TextInputLayout layoutEndereco;
+    private TextInputLayout layoutTelefone;
+    private TextInputLayout layoutEmail;
+    private ContatoHelper helper;
+    private Button btnGaleria;
+    private Button btnCamera;
+    private ImageView fotoContato;
+    private String caminhoDaFoto;
 
 
 
